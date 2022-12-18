@@ -53,8 +53,9 @@ async def roll(ctx, number=1):
         await ctx.send(output)
 
 
-@roll.error()
-async def roll_error(error, ctx):
-    if isinstance(error, ValueError):
+@roll.error
+async def roll_error(ctx, error):
+    if isinstance(error, commands.errors.BadArgument):
         await ctx.send("輸入次數必須為整數!")
+
 client.run("MTA1MzczMDcyNTUwNzEyMTE3Mg.G3MGCW.bXwlFlIOH-G2rHwKqeLfBMhX0QI3yUvCAXlOag")
