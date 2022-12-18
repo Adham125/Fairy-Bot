@@ -37,4 +37,4 @@ async def ping(ctx):
 async def rollDice(ctx):
     await ctx.send(randint(1 , 100))
 
-client.run("MTA1MzczMDcyNTUwNzEyMTE3Mg.GrYPUu.3doQOIFnDG6VTIuBExeCuPzbPyWX1pwpPQBZd4")
+client.run("MTA1MzczMDcyNTUwNzEyMTE3Mg.G3MGCW.bXwlFlIOH-G2rHwKqeLfBMhX0QI3yUvCAXlOag")
