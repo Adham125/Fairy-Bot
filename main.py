@@ -38,6 +38,26 @@ async def ping(ctx):
 
 
 @client.command()
+async def Q1(ctx):
+    await ctx.send("A1")
+
+
+@client.command()
+async def Q2(ctx):
+    await ctx.send("A2")
+
+
+@client.command()
+async def Q3(ctx):
+    await ctx.send("A3")
+
+
+@client.command()
+async def Q4(ctx):
+    await ctx.send("A4")
+
+
+@client.command()
 async def roll(ctx, number=1):
     if number < 1:
         await ctx.send("輸入次數必須大於一!")
