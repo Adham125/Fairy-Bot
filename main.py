@@ -10,7 +10,7 @@ bot_id = 1053730725507121172
 kevin_id = 336153574088376331
 my_id = 378212274084773889
 welcome_ch = 1053502894290255946
-react_ch = 1053568036944224276
+react_ch = 1054767776230813737
 emoji1 = '<:test:1054111690230345760>' #only custom emoji's have this format
 emoji2 = ''
 
@@ -19,6 +19,10 @@ emoji2 = ''
 async def on_ready():
     print('logged in as {0.user}'.format(client))
     print("")
+    Channel = client.get_channel(react_ch)
+    await Channel.purge()
+    msg = await Channel.send("React to this message to get a role you want")
+    await msg.add_reaction(emoji1)
 
 
 @client.event
@@ -30,7 +34,9 @@ async def on_member_join(member):
 @client.event
 async def on_member_remove(member):
     user_kevin = client.get_user(kevin_id)
-    await user_kevin.send("Member: " + member.name + " Has Left The Server")
+    channel_welcome = client.get_channel(welcome_ch)
+    await channel_welcome.send("成員離開:<@" + str(member.id) + "> 已離開群組")
+    await user_kevin.send("成員離開:<@" + str(member.id) + "> 已離開群組")
 
 
 @client.event
@@ -44,11 +50,24 @@ async def on_reaction_add(reaction, user):
         await user.add_roles(Role)
 
 
+@client.event
+async def on_reaction_remove(reaction, user):
+    Channel = client.get_channel(react_ch)
+    server = await client.fetch_guild(1053502894290255943)  # server ID
+    if reaction.message.channel.id != Channel.id or user.id == bot_id:
+        return
+    if str(reaction) == emoji1:
+        Role = discord.utils.get(server.roles, name="test1")
+        await user.remove_roles(Role)
+
+
 @client.command()
 async def reaction_initialize(ctx):
-    Channel = client.get_channel(react_ch)
-    msg = await Channel.send("React to this message to get a role you want")
-    await msg.add_reaction(emoji1)
+    if ctx.user.id == kevin_id or ctx.user.id == my_id:
+        Channel = client.get_channel(react_ch)
+        await Channel.purge()
+        msg = await Channel.send("React to this message to get a role you want")
+        await msg.add_reaction(emoji1)
 
 
 @client.command()
