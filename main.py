@@ -2,6 +2,7 @@ import os
 import discord
 from discord.ext import commands
 from random import *
+import time
 
 intents = discord.Intents.all()
 client = commands.Bot(command_prefix='~', intents=intents)
@@ -144,8 +145,32 @@ async def on_ready():
 
 @client.event
 async def on_member_join(member):
+    time.sleep(2)
     channel_welcome = client.get_channel(welcome_ch)
-    await channel_welcome.send("Welcome " + member.name + " To The Server!")
+
+    embed = discord.Embed(title='恭喜 {0} 成功抵達夢幻島！'.format(member.name),
+                          description="NEVERLAND，有人譯作夢幻島、永無鄉…\n"
+                                "衰老、哀傷、孤寂禁區，亦不存於世界之地。\n\n"
+
+                                "夢幻島是出自小飛俠彼得潘中的一個海島，\n"
+                                "島上的人不被時間推著前行，忘卻世間煩憂，\n"
+                                "初衷在這不會被磨蝕；童心在這不會被吞噬。\n\n"
+                                
+                                "傳說中，迷失的孩子會走到夢幻島，\n"
+                                "那是安全的避風港，在島上的孩子不會長大，\n"
+                                "夢想都能夠實現，成為各自故事中的主人翁。\n\n"
+                                
+                                "縱使活著面對困苦挫敗，人們被逼往前踏著，\n"
+                                "但至少在NEVERLAND，我們能夠拋下世俗，\n"
+                                "以童心為筆，歡笑為墨，\n\n"
+                                
+                                "譜寫出屬於我們的冒險故事 ✿",
+                          color=0xD4B9D4)
+    embed.set_image(url="https://cdn.discordapp.com/attachments/1058391685266149436/1058459830995660961/banner2.png")
+    useravatar = member.display_avatar
+    embed.set_thumbnail(url=useravatar.url)
+    embed.set_author(name=f'{member}')
+    await channel_welcome.send(embed=embed)
 
 
 @client.event
@@ -427,7 +452,7 @@ async def Q6(ctx):
     if ctx.channel.id == 1058047748206768180:
         channel = client.get_channel(1058412147366953000)
         await ctx.send(
-            "若想要尋找或尋求職業攻略，須先到 {0}  選擇職業，獲得身份組後便可以在Discord頻道列表的 Build 類別下看到相關職業的資訊。 ".format(
+            "若想要尋找或尋求副本攻略，可以前往Discord頻道列表的 Member 類別下 {0}  尋找相關副本的資訊。".format(
                 channel.mention)
         )
 
