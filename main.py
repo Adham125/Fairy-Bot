@@ -372,17 +372,96 @@ async def on_reaction_remove(reaction, user):
 
 
 @client.command()
-async def reaction_initialize(ctx):
-    if ctx.user.id == kevin_id or ctx.user.id == my_id:
+async def reaction_reset(ctx):
+    if ctx.author.id == kevin_id or ctx.author.id == my_id:
         Channel = client.get_channel(react_ch)
         await Channel.purge()
-        msg = await Channel.send("React to this message to get a role you want")
+        msg = await Channel.send(
+            "請在以下按反應選擇你有在遊玩的遊戲以獲取身份組\n\n▸ " + apex + "　Apex英雄 Apex Legends\n▸ " + LOL + "　英雄聯盟 League of Legends\n▸ " + pubg + "　絕地求生 PUBG: BATTLEGROUNDS\n▸ " + naraka + "　永劫無間 NARAKA: BLADEPOINT\n▸ " + dbd + "　黎明死線 Dead By Daylight\n▸ " + blackdesert + "　黑色沙漠 Black Desert\n")
+        msg2 = await Channel.send(
+            "ˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣˣ\n"
+            "請在以下按反應選擇你有在遊玩的職業以獲取身份組\n\n"
+
+            "【　戰士 Warrior　】\n\n"
+
+            "<:berserker:1058394958266122280> 狂戰 Berserker\n"
+            "<:paladin:1058395259555557438> 聖騎 Paladin\n"
+            "<:gunlancer:1058395258288885770> 督軍 Ganlancer\n"
+            "<:destroyer:1058394963521572965> 毀滅 Destroyer"
+        )
+        msg3 = await Channel.send(
+            "▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁\n\n"
+            "【　武鬥 Martial Artist　】\n\n"
+
+            "<:striker:1058395267407286403> 決鬥 Striker\n"
+            "<:wardancer:1058394978373607474> 格鬥 Wardancer\n"
+            "<:scrapper:1058394970945499157> 拳霸 Scrapper\n"
+            "<:soulfist:1058395266048335933> 氣功 Soulfist\n"
+            "<:glaivier:1058394965627129906> 槍術 Glaivier"
+        )
+        msg4 = await Channel.send(
+            "▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁\n\n"
+            "【　射手 Hunter　】\n\n"
+
+            "<:gunslinger:1058394967623598150> 女槍 Gunslinger\n"
+            "<:artillerist:1058394952142422038> 槍炮 Artillerist\n"
+            "<:deadeye:1058394959931244565> 男槍 Deadeye\n"
+            "<:sharpshooter:1058395264819396639> 弓手 Sharpshooter\n"
+            "<:scouter:1058395262055358555> 哨兵 Machinist"
+        )
+        msg5 = await Channel.send(
+            "▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁\n\n"
+            "【　法師 Mage　】\n\n"
+
+            "<:bard:1058394955862781992> 詩人 Bard\n"
+            "<:sorceress:1058394974636478474> 女巫 Sorceress\n"
+            "<:arcana:1058394950896734228> 卡牌 Arcanist\n"
+            "<:summoner:1058395268942401556> 召喚 Summoner"
+        )
+        msg6 = await Channel.send(
+            "▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁\n\n"
+            "【　刺客 Assassin　】\n\n"
+
+            "<:shadowhunter:1058395263473025154> 半魔 Demonic\n"
+            "<:deathblade:1058394962078740531> 刀鋒 Deathblade\n"
+            "<:reaper:1058395260839018596> 死神 Reaper\n"
+        )
+        msg7 = await Channel.send(
+            "▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁\n\n"
+            "【　專家 Specialist　】\n\n"
+
+            "<:lostarkartist:1058394954084397138> 畫家 Artist\n"
+            "<:aeromancer:1058394949772648528> 氣象 Aeromancer"
+        )
         await msg.add_reaction(apex)
         await msg.add_reaction(LOL)
         await msg.add_reaction(pubg)
         await msg.add_reaction(naraka)
         await msg.add_reaction(dbd)
         await msg.add_reaction(blackdesert)
+        await msg2.add_reaction(berserker)
+        await msg2.add_reaction(paladin)
+        await msg2.add_reaction(gunlancer)
+        await msg2.add_reaction(destroyer)
+        await msg3.add_reaction(striker)
+        await msg3.add_reaction(wardancer)
+        await msg3.add_reaction(scrapper)
+        await msg3.add_reaction(soulfist)
+        await msg3.add_reaction(glaivier)
+        await msg4.add_reaction(gunslinger)
+        await msg4.add_reaction(artillerist)
+        await msg4.add_reaction(deadeye)
+        await msg4.add_reaction(sharpshooter)
+        await msg4.add_reaction(scouter)
+        await msg5.add_reaction(bard)
+        await msg5.add_reaction(sorceress)
+        await msg5.add_reaction(arcana)
+        await msg5.add_reaction(summoner)
+        await msg6.add_reaction(shadowhunter)
+        await msg6.add_reaction(deathblade)
+        await msg6.add_reaction(reaper)
+        await msg7.add_reaction(lostarkartist)
+        await msg7.add_reaction(aeromancer)
 
 
 @client.command()
