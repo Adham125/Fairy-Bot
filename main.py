@@ -561,10 +561,34 @@ async def roll(ctx, number=1):
         output = output + " 跟 " + str(randint(0, 100))
         await ctx.send(output)
 
+client.remove_command('help')
+
+
+@client.command(name="help", help="Displays all the available commands")
+async def help(ctx):
+
+    help_msg = """
+    ```
+    General commands:
+    -help - displays all the available commands
+    -p <keywords> - finds the song on youtube and plays it in your current channel. Will resume playing the current song if it was paused
+    -q - displays the current music queue
+    -skip - skips the current song being played
+    -clear - Stops the music and clears the queue
+    -leave - Disconnected the bot from the voice channel
+    -pause - pauses the current song being played or resumes if already paused
+    -resume - resumes playing the current song
+    ```
+    """
+
+    await ctx.send(help_msg)
 
 @roll.error
 async def roll_error(ctx, error):
     if isinstance(error, commands.errors.BadArgument):
         await ctx.send("輸入次數必須為整數!")
+
+
+
 
 client.run("MTA1MzczMDcyNTUwNzEyMTE3Mg.G3MGCW.bXwlFlIOH-G2rHwKqeLfBMhX0QI3yUvCAXlOag")
