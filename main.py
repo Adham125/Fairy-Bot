@@ -466,6 +466,7 @@ async def reaction_reset(ctx):
 
 @client.command()
 async def Q1(ctx):
+    channel = client.get_channel(958085366546583653)
     if ctx.channel.id == 1058047748206768180:
         await ctx.send(
             "［Neverland］創立是為了建築一個安全友善的遊戲環境，保障大家的遊戲體驗，並和大家共同進退。\n"
@@ -473,7 +474,9 @@ async def Q1(ctx):
 
             "夢幻島一共有兩個公會：\n"
             "［Neverland］是為了公會戰與排名而設立的總部，希望在總部的居民們可以一起為公會資源而奮鬥。\n"
-            "而［夢幻島］是為休閒玩家設立的分部，讓不善戰的居民有一個安身之處，能放心體驗各種遊戲內容。"
+            "而［夢幻島］是為休閒玩家設立的分部，讓不善戰的居民有一個安身之處，能放心體驗各種遊戲內容。\n\n"
+
+            "如果想知道更多詳情，可至 {0} 查看".format(channel.mention)
         )
 
 
@@ -501,9 +504,22 @@ async def Q2(ctx):
 async def Q3(ctx):
     if ctx.channel.id == 1058047748206768180:
         await ctx.send(
-            "如居民需要離島超過三天，請附上請假日數及請假理由跟幹部申請。若連續申請的次數過多，請考慮一下本公會是否適合閣下。\n"
-            "居民遇到遊戲或Discord上任何問題，可以踴躍向幹部提出意見或求助，幹部會收集大家的意見再向會長報告，以作出最客觀不偏的決定。\n"
-            "另外，如有性別敏感的情況，歡迎向相同性別的幹部提出。\n"
+            "夢幻島幹部成員\n\n"
+
+            "男會長：小萌\n"
+            "負責內容：所有事務\n\n"
+            
+            "女秘書：純\n"
+            "負責內容：所有事務\n\n"
+            
+            "美術及活動組 - 女組長：茉然\n"
+            "負責內容：美術及活動相關事務\n\n"
+            
+            "戰場及PVP組 - 男組長：CC\n"
+            "負責內容：公會戰及PVP相關事務\n\n"
+            
+            "生活輔導組 - 男組長：雞絲\n"
+            "負責內容：休閒社區管理相關事務"
         )
 
 
@@ -529,9 +545,9 @@ async def Q5(ctx):
 @client.command()
 async def Q6(ctx):
     if ctx.channel.id == 1058047748206768180:
-        channel = client.get_channel(1058412147366953000)
+        channel = client.get_channel(1060376356480888832)
         await ctx.send(
-            "若想要尋找或尋求副本攻略，可以前往Discord頻道列表的 Member 類別下 {0}  尋找相關副本的資訊。".format(
+            "若想要尋找或尋求副本攻略，可以前往Discord頻道列表的 Member 類別下 {0} 尋找相關副本的資訊。".format(
                 channel.mention)
         )
 
@@ -566,29 +582,32 @@ client.remove_command('help')
 
 @client.command(name="help", help="Displays all the available commands")
 async def help(ctx):
-
+    channel = client.get_channel(958037064102867016)
     help_msg = """
     ```
-    General commands:
-    -help - displays all the available commands
-    -p <keywords> - finds the song on youtube and plays it in your current channel. Will resume playing the current song if it was paused
-    -q - displays the current music queue
-    -skip - skips the current song being played
-    -clear - Stops the music and clears the queue
-    -leave - Disconnected the bot from the voice channel
-    -pause - pauses the current song being played or resumes if already paused
-    -resume - resumes playing the current song
+    您好，這裡是夢幻島的小幫手，專門來幫助迷路的小伙伴。
+    如果你有遇到以下困難，可以在此頻道輸入以下指令（例：~Q1）
+
+    ~Q1 ┈┈┈ 介紹公會
+    ~Q2 ┈┈┈ 幹部簡介
+    ~Q3 ┈┈┈ 尋求協助
+    ~Q4 ┈┈┈ 申請幹部
+    ~Q5 ┈┈┈ 職業攻略
+    ~Q6 ┈┈┈ 副本攻略
+    ~Q7 ┈┈┈ 收藏攻略
+
+    如果尋求內容不包括在以上分類，或者以上內容未能協助解決問題，
+    歡迎在 [𝑁𝑒𝑣𝑒𝑟𝑙𝑎𝑛𝑑-聊天] 或私下向幹部們提出。
     ```
     """
 
     await ctx.send(help_msg)
 
+
 @roll.error
 async def roll_error(ctx, error):
     if isinstance(error, commands.errors.BadArgument):
         await ctx.send("輸入次數必須為整數!")
-
-
 
 
 client.run("MTA1MzczMDcyNTUwNzEyMTE3Mg.G3MGCW.bXwlFlIOH-G2rHwKqeLfBMhX0QI3yUvCAXlOag")
