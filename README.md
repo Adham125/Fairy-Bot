@@ -7,6 +7,7 @@ Features:
 - User leaving the server notifications.
 
 Commands:
+
 Q1 - Returns server information.
 
 Q2 - Returns server information.
@@ -23,4 +24,4 @@ Q7 - Returns server information.
 
 roll - Returns randomly generated number(s) between 0-100.
 
-help - Writes out all possible commands.
+help - Write out all possible commands.
